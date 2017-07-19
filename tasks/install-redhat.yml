@@ -8,6 +8,7 @@
   tags:
     - gitlab
     - gitlab-gpg
+  environment: "{{proxy_env}}"
 
 - name: Install GitLab Runner dependencies
   yum:
@@ -23,7 +24,9 @@
     dest: /etc/yum.repos.d/runner_gitlab-ci-multi-runner.repo
 
 - name: Install GitLab Runner
+  environment: "{{proxy_env}}"
   yum:
     name: gitlab-ci-multi-runner
     state: latest
     update_cache: yes
+
